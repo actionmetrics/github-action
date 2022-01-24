@@ -8248,6 +8248,7 @@ async function main() {
       }
     )) {
       for (const run of runs.data) {
+        console.log(run.id);
         let artifacts = await client.rest.actions.listWorkflowRunArtifacts({
           owner: owner,
           repo: repo,
