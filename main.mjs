@@ -1,18 +1,18 @@
-const core = require("@actions/core");
-const github = require("@actions/github");
+import { getInput, setFailed } from "@actions/core";
+import { getOctokit } from "@actions/github";
 
 async function main() {
   try {
-    const token = core.getInput("github_token", { required: true });
-    const workflow = core.getInput("workflow", { required: true });
-    const [owner, repo] = core.getInput("repo", { required: true }).split("/");
-    const path = core.getInput("path", { required: true });
-    const name = core.getInput("name");
-    const branch = core.getInput("default_branch");
+    const token = getInput("github_token", { required: true });
+    const workflow = getInput("workflow", { required: true });
+    const [owner, repo] = getInput("repo", { required: true }).split("/");
+    const path = getInput("path", { required: true });
+    const name = getInput("name");
+    const branch = getInput("default_branch");
 
     let runID;
 
-    const client = github.getOctokit(token);
+    const client = getOctokit(token);
 
     for await (const runs of client.paginate.iterator(
       client.actions.listWorkflowRuns,
@@ -57,7 +57,7 @@ async function main() {
       throw new Error("no matching workflow run found");
     }
   } catch (error) {
-    core.setFailed(error.message);
+    setFailed(error.message);
   }
 }
 
