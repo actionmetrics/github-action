@@ -1,0 +1,22 @@
+name: "Action Metrics"
+description: "Store metrics against your default branch and compare against "
+inputs:
+  default-branch: # id of input
+    description: "The default branch of the repository"
+    required: true
+    default: "main"
+outputs:
+  default:
+    description: "Current metrics on the default branch"
+    value: "{}"
+  current:
+    description: "Current metrics on the current branch"
+    value: "{}"
+  diff:
+    description: "Difference in metrics between default branch and main branch"
+    value: "{}"
+runs:
+  using: "composite"
+  steps:
+    - run: echo Hello
+      shell: bash
