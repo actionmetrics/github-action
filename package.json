@@ -2,7 +2,7 @@
   "name": "action-metrics",
   "main": "dist/index.js",
   "scripts": {
-    "build": "ncc build src/main.mjs -o dist"
+    "build": "ncc build src/main.mjs -o ./"
   },
   "dependencies": {
     "@actions/core": "^1.3.0",
