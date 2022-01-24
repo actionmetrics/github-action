@@ -8255,6 +8255,8 @@ async function main() {
           run_id: run.id,
         });
 
+        console.log(artifacts);
+
         if (artifacts.data.artifacts.length == 0) {
           continue;
         }
