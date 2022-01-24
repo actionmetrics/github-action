@@ -1,8 +1,14 @@
 {
   "name": "action-metrics",
   "main": "main.js",
+  "scripts": {
+    "build": "ncc build src/action.js -o dist"
+  }
   "dependencies": {
     "@actions/core": "^1.3.0",
     "@actions/github": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.33.1"
   }
 }
