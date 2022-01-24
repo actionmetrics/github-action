@@ -1,41 +1,32 @@
 name: "Action Metrics"
-description: "Store metrics against your default branch and compare against "
+description: "Store metrics against your default branch and compare against your pull requests"
+author: actionmetrics
+branding:
+  icon: bar-chart
+  color: blue
 inputs:
-  default-branch: # id of input
-    description: "The default branch of the repository"
-    required: true
+  default_branch:
+    description: The default branch used by your repository
+    required: false
     default: "main"
-outputs:
-  default:
-    description: "Current metrics on the default branch"
-    value: "{}"
-  current:
-    description: "Current metrics on the current branch"
-    value: "{}"
-  diff:
-    description: "Difference in metrics between default branch and main branch"
-    value: "{}"
+  github_token:
+    description: GitHub token
+    required: false
+    default: ${{github.token}}
+  repo:
+    description: Repository name with owner (like actionmetrics/github-action)
+    required: false
+    default: ${{github.repository}}
+  name:
+    description: Artifact name (defaults to action-metrics.json)
+    required: false
+  path:
+    description: Where to store the metrics
+    required: false
+    default: "./.action-metrics"
+  workflow:
+    description: Workflow name
+    required: true
 runs:
-  using: "composite"
-  steps:
-    - name: Use Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16
-    - name: Download artifact
-      uses: dawidd6/action-download-artifact@v2
-      with:
-        # Optional, GitHub token, a Personal Access Token with `public_repo` scope if needed
-        # Required, if artifact is from a different repo
-        # Required, if repo is private a Personal Access Token with `repo` scope is needed
-        github_token: ${{secrets.GH_TOKEN}}
-        # Required, workflow file name or ID
-        workflow: action.yml
-        workflow_conclusion: success
-        branch: main
-        # Optional, defaults to all types
-        event: push
-        name: version
-    - name: Run Version
-      shell: bash
-      run: node index.mjs
+  using: node16
+  main: main.js
