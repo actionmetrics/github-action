@@ -15,7 +15,7 @@ async function main() {
     const client = getOctokit(token);
 
     for await (const runs of client.paginate.iterator(
-      client.actions.listWorkflowRuns,
+      client.rest.actions.listWorkflowRuns,
       {
         owner: owner,
         repo: repo,
@@ -24,7 +24,7 @@ async function main() {
       }
     )) {
       for (const run of runs.data) {
-        let artifacts = await client.actions.listWorkflowRunArtifacts({
+        let artifacts = await client.rest.actions.listWorkflowRunArtifacts({
           owner: owner,
           repo: repo,
           run_id: run.id,
@@ -57,7 +57,7 @@ async function main() {
       throw new Error("no matching workflow run found");
     }
   } catch (error) {
-    setFailed(error.message);
+    setFailed(error);
   }
 }
 
