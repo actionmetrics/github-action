@@ -24,6 +24,10 @@ inputs:
     description: Where to store the metrics
     required: false
     default: "./.action-metrics"
+  fileName:
+    description: Name of the file to store the metrics
+    required: false
+    default: "file.json"
   workflow:
     description: Workflow name
     required: true

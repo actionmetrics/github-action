@@ -11303,6 +11303,7 @@ async function main() {
     const [owner, repo] = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("repo", { required: true }).split("/");
     const path = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("path", { required: true });
     const name = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("name");
+    const fileName = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("fileName");
     const branch = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)("default_branch");
 
     let runId;
@@ -11395,7 +11396,8 @@ async function main() {
 
     adm.extractAllTo(dir, true);
 
-    // fs.readFileSync();
+    const file = fs__WEBPACK_IMPORTED_MODULE_5__.readFileSync(`${dir}/${fileName}`, "utf8");
+    console.log(file);
   } catch (error) {
     (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(error);
   }

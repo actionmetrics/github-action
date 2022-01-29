@@ -12,6 +12,7 @@ async function main() {
     const [owner, repo] = getInput("repo", { required: true }).split("/");
     const path = getInput("path", { required: true });
     const name = getInput("name");
+    const fileName = getInput("fileName");
     const branch = getInput("default_branch");
 
     let runId;
@@ -104,7 +105,8 @@ async function main() {
 
     adm.extractAllTo(dir, true);
 
-    // fs.readFileSync();
+    const file = fs.readFileSync(`${dir}/${fileName}`, "utf8");
+    console.log(file);
   } catch (error) {
     setFailed(error);
   }
