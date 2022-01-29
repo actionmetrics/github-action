@@ -106,7 +106,8 @@ async function main() {
     adm.extractAllTo(dir, true);
 
     const file = fs.readFileSync(`${dir}/${fileName}`, "utf8");
-    console.log(file);
+    const json = JSON.parse(file);
+    console.log(json);
   } catch (error) {
     setFailed(error);
   }

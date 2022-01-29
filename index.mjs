@@ -11397,7 +11397,8 @@ async function main() {
     adm.extractAllTo(dir, true);
 
     const file = fs__WEBPACK_IMPORTED_MODULE_5__.readFileSync(`${dir}/${fileName}`, "utf8");
-    console.log(file);
+    const json = JSON.parse(file);
+    console.log(json);
   } catch (error) {
     (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(error);
   }
