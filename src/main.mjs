@@ -80,7 +80,7 @@ async function main() {
 
     console.log(`*** Downloading *** ${artifact.name}.zip (${size})`);
 
-    const zip = await client.actions.downloadArtifact({
+    const zip = await client.rest.actions.downloadArtifact({
       owner: owner,
       repo: repo,
       artifact_id: artifact.id,
