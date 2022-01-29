@@ -100,6 +100,8 @@ async function main() {
       console.log(`  ${action}: ${filepath}`);
     });
 
+    console.log(dir);
+
     adm.extractAllTo(dir, true);
 
     fs.readFileSync();
