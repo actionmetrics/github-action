@@ -11353,7 +11353,7 @@ async function main() {
     }
 
     let artifacts = await client.paginate(
-      client.actions.listWorkflowRunArtifacts,
+      client.rest.actions.listWorkflowRunArtifacts,
       {
         owner: owner,
         repo: repo,
@@ -11365,11 +11365,11 @@ async function main() {
       return artifact.name == name;
     });
 
-    console.log("==> Artifact:", artifact.id);
+    console.log("*** Artifact ***:", artifact.id);
 
     const size = filesize__WEBPACK_IMPORTED_MODULE_4__(artifact.size_in_bytes, { base: 10 });
 
-    console.log(`==> Downloading: ${artifact.name}.zip (${size})`);
+    console.log(`*** Downloading *** ${artifact.name}.zip (${size})`);
 
     const zip = await client.actions.downloadArtifact({
       owner: owner,
@@ -11392,6 +11392,8 @@ async function main() {
     });
 
     adm.extractAllTo(dir, true);
+
+    fs__WEBPACK_IMPORTED_MODULE_5__.readFileSync();
   } catch (error) {
     (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(error);
   }

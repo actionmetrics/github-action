@@ -62,7 +62,7 @@ async function main() {
     }
 
     let artifacts = await client.paginate(
-      client.actions.listWorkflowRunArtifacts,
+      client.rest.actions.listWorkflowRunArtifacts,
       {
         owner: owner,
         repo: repo,
@@ -101,6 +101,8 @@ async function main() {
     });
 
     adm.extractAllTo(dir, true);
+
+    fs.readFileSync();
   } catch (error) {
     setFailed(error);
   }
