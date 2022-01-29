@@ -104,7 +104,7 @@ async function main() {
 
     adm.extractAllTo(dir, true);
 
-    fs.readFileSync();
+    // fs.readFileSync();
   } catch (error) {
     setFailed(error);
   }

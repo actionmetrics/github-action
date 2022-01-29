@@ -11395,7 +11395,7 @@ async function main() {
 
     adm.extractAllTo(dir, true);
 
-    fs__WEBPACK_IMPORTED_MODULE_5__.readFileSync();
+    // fs.readFileSync();
   } catch (error) {
     (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed)(error);
   }
