@@ -74,11 +74,11 @@ async function main() {
       return artifact.name == name;
     });
 
-    console.log("==> Artifact:", artifact.id);
+    console.log("*** Artifact ***:", artifact.id);
 
     const size = filesize(artifact.size_in_bytes, { base: 10 });
 
-    console.log(`==> Downloading: ${artifact.name}.zip (${size})`);
+    console.log(`*** Downloading *** ${artifact.name}.zip (${size})`);
 
     const zip = await client.actions.downloadArtifact({
       owner: owner,
